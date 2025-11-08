@@ -4,6 +4,18 @@ variable "aws_region" {
   default     = "eu-central-1"
 }
 
+variable "environment" {
+  description = "Environment name"
+  type        = string
+  default     = "dev"
+}
+
+variable "project_name" {
+  description = "Project name prefix"
+  type        = string
+  default     = "rimo"
+}
+
 variable "vpc_cidr" {
   description = "CIDR block for VPC"
   type        = string

@@ -1,10 +1,14 @@
+locals {
+  name_prefix = "${var.project_name}-${var.environment}"
+}
+
 resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
   enable_dns_support   = true
 
   tags = {
-    Name = "voting-system-vpc"
+    Name = "${local.name_prefix}-vpc"
   }
 }
 
@@ -15,7 +19,7 @@ resource "aws_subnet" "public" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "public-subnet"
+    Name = "${local.name_prefix}-public-subnet"
   }
 }
 
@@ -25,7 +29,7 @@ resource "aws_subnet" "private" {
   availability_zone = data.aws_availability_zones.available.names[0]
 
   tags = {
-    Name = "private-subnet"
+    Name = "${local.name_prefix}-private-subnet"
   }
 }
 
@@ -33,7 +37,7 @@ resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "voting-system-igw"
+    Name = "${local.name_prefix}-igw"
   }
 }
 
