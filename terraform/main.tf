@@ -42,3 +42,18 @@ module "key_pairs" {
 module "ami" {
   source = "./modules/ami"
 }
+
+module "ec2" {
+  source = "./modules/ec2"
+
+  project_name       = var.project_name
+  environment        = var.environment
+  ami_id             = module.ami.ami_id
+  instance_type      = var.instance_type
+  public_subnet_id   = module.vpc.public_subnet_id
+  private_subnet_id  = module.vpc.private_subnet_id
+  public_sg_id       = module.security_groups.public_sg_id
+  private_sg_id      = module.security_groups.private_sg_id
+  database_sg_id     = module.security_groups.database_sg_id
+  key_pair_name      = module.key_pairs.key_pair_name
+}
