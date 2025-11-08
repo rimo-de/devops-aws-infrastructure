@@ -48,3 +48,9 @@ variable "private_key" {
   type        = string
   sensitive   = true
 }
+
+variable "ami_id" {
+  description = "Amazon Linux 2023 AMI ID for eu-central-1"
+  type        = string
+  default     = "ami-0f78f0f0c76cef16f"
+}

@@ -38,3 +38,7 @@ module "key_pairs" {
   public_key   = var.public_key
   private_key  = var.private_key
 }
+
+module "ami" {
+  source = "./modules/ami"
+}
