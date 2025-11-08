@@ -29,3 +29,12 @@ module "security_groups" {
   environment  = var.environment
   vpc_id       = module.vpc.vpc_id
 }
+
+module "key_pairs" {
+  source = "./modules/key-pairs"
+
+  project_name = var.project_name
+  environment  = var.environment
+  public_key   = var.public_key
+  private_key  = var.private_key
+}

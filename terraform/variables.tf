@@ -38,3 +38,13 @@ variable "aws_region" {
   type        = string
   default     = "eu-central-1"
 }
+variable "public_key" {
+  description = "SSH public key content"
+  type        = string
+}
+
+variable "private_key" {
+  description = "SSH private key content"
+  type        = string
+  sensitive   = true
+}
