@@ -1,0 +1,89 @@
+---
+- name: Install and run vote app on frontend
+  hosts: all
+  become: yes
+  vars:
+    username: "rimo9docker"
+    image_map:
+      rimo-dev-frontend:
+        - image: "rimo9docker/voting-app:latest"
+          name: "vote"
+          ports: "80:80"
+          env:
+            REDIS_HOST: "10.0.2.17"
+            REDIS_PORT: "6379"
+        - image: "rimo9docker/result-app:latest"
+          name: "result"
+          ports: "81:80"
+          env:
+            PG_HOST: "10.0.2.251"
+            PG_USER: "postgres"
+            PG_PASSWORD: "postgres"
+            PG_NAME: "postgres"
+            PG_PORT: "5432"
+      rimo-dev-backend:
+        - image: "redis"
+          name: "redis"
+          ports: "6379:6379"
+        - image: "rimo9docker/worker-app:latest"
+          name: "worker"
+          env:
+            REDIS_HOST: "redis"
+            DB_HOST: "10.0.2.251"
+            DB_USER: "postgres"
+            DB_PASSWORD: "postgres"
+            DB_NAME: "postgres"
+      rimo-dev-database:
+        - image: "postgres"
+          name: "postgres"
+          ports: "5432:5432"
+          env:
+            POSTGRES_PASSWORD: "postgres"
+            POSTGRES_DB: "postgres"
+            POSTGRES_USER: "postgres"
+  tasks:
+    - name: Install Docker
+      shell: yum install -y docker
+      ignore_errors: yes
+
+    - name: Ensure docker is running
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Wait for docker to be ready
+      pause:
+        seconds: 5
+
+    - name: Add user ec2-user to docker group
+      user:
+        name: ec2-user
+        groups: docker
+        append: yes
+
+    - name: Reset ssh connection to apply group changes
+      meta: reset_connection
+    - name: Pull Docker images for this host (supports multiple)
+      community.docker.docker_image:
+        name: "{{ item.image }}"
+        source: pull
+      loop: "{{ image_map[inventory_hostname] }}"
+      when: image_map[inventory_hostname] is defined
+    - name: Create Docker network for backend only
+      docker_network:
+        name: backend_network
+        state: present
+      when: inventory_hostname == "rimo-dev-backend"
+    - name: Run containers for this host (supports multiple)
+      community.docker.docker_container:
+        name: "{{ item.name }}"
+        image: "{{ item.image }}"
+        ports: "{{ item.ports | default(omit) }}"
+        env: "{{ item.env | default(omit) }}"
+        state: started
+        restart_policy: always
+        networks:
+          - name: "{{ 'backend_network' if inventory_hostname == 'rimo-dev-backend' else 'bridge' }}"
+      loop: "{{ image_map[inventory_hostname] }}"
+      when: image_map[inventory_hostname] is defined

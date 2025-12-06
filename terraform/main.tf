@@ -35,8 +35,6 @@ module "key_pairs" {
 
   project_name = var.project_name
   environment  = var.environment
-  public_key   = var.public_key
-  private_key  = var.private_key
 }
 
 module "ami" {

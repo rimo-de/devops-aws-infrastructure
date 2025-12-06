@@ -1,0 +1,31 @@
+# Terraform files (they contain sensitive data like passwords, API keys)
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# Ansible files
+*.cfg
+
+# Environment files
+.env
+.env.local
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Python files (if you use Python scripts)
+__pycache__/
+*.pyc
+*.pyo
