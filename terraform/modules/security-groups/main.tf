@@ -94,12 +94,21 @@ resource "aws_security_group" "database" {
     security_groups = [aws_security_group.public.id]
   }
 
+  # Allow SSH
+  ingress {
+    from_port       = 5432
+    to_port         = 5432
+    protocol        = "tcp"
+    security_groups = [aws_security_group.public.id]
+  }
+
   # Allow PostgreSQL (5432) from private security group only
   ingress {
     from_port       = 5432
     to_port         = 5432
     protocol        = "tcp"
     security_groups = [aws_security_group.private.id]
+    description     = "PostgreSQL from Worker in private subnet"
   }
 
   # Allow all outbound

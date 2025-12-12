@@ -1,85 +1,73 @@
 ---
-# Common setup for all hosts
-- name: Install Docker on all hosts
+- name: Install and configure app components manually per host
   hosts: all
   become: yes
   tasks:
-    - name: Update package manager cache
+    # Install Docker and prerequisites
+    - name: Update apt cache
       apt:
         update_cache: yes
-
     - name: Install Docker
       apt:
         name: docker.io
         state: present
-
     - name: Start and enable Docker service
       service:
         name: docker
         state: started
-        enabled: yes
-
+        enabled: true
     - name: Add ubuntu user to docker group (no sudo needed)
       user:
         name: ubuntu
         groups: docker
         append: yes
-
-    - name: Reset SSH connection to apply group changes
-      meta: reset_connection
-
-    - name: Install Python Docker SDK (required for Ansible Docker modules)
-      apt:
-        name: python3-docker
-        state: present
-
-# FRONTEND TIER — vote + result containers
+############################################################
+# FRONTEND INSTANCE — vote + result
+############################################################
 - name: Deploy frontend containers (vote + result)
-  hosts: frontend
+  hosts: frontend-instance-1
   become: yes
   tasks:
     - name: Pull vote image
       community.docker.docker_image:
-        name: "rimo9docker/voting-app"
+        name: "chojiu/vote-project-1"
         tag: latest
         source: pull
-
     - name: Run vote container
       community.docker.docker_container:
         name: vote
-        image: "rimo9docker/voting-app:latest"
+        image: "chojiu/vote-project-1:latest"
         ports:
           - "80:80"
         env:
-          REDIS_HOST: "10.0.2.191"
+          REDIS_HOST: "10.0.2.68" # IP of Redis
           REDIS_PORT: "6379"
         state: started
         restart_policy: always
-
     - name: Pull result image
       community.docker.docker_image:
-        name: "rimo9docker/result-app"
+        name: "chojiu/result-project-1"
         tag: latest
         source: pull
-
     - name: Run result container
       community.docker.docker_container:
         name: result
-        image: "rimo9docker/result-app:latest"
+        image: "chojiu/result-project-1:latest"
         ports:
           - "81:80"
         env:
-          PG_HOST: "10.0.3.162"
+          PG_HOST: "10.0.3.37" # IP of Postgres
           PG_USER: "postgres"
           PG_PASSWORD: "postgres"
           PG_NAME: "postgres"
           PG_PORT: "5432"
         state: started
         restart_policy: always
-
-# BACKEND TIER — redis + worker containers
+############################################################
+# BACKEND INSTANCE — redis + worker (shared private network)
+############################################################
 - name: Deploy backend containers (redis + worker)
-  hosts: backend
+  hosts: backend-instance-1
   become: yes
   tasks:
     - name: Create internal Docker network for backend
@@ -87,12 +75,10 @@
         name: backend_network
         driver: bridge
         state: present
-
     - name: Pull redis image
       community.docker.docker_image:
         name: redis
         source: pull
-
     - name: Run redis container
       community.docker.docker_container:
         name: redis
@@ -103,20 +89,18 @@
           - name: backend_network
         state: started
         restart_policy: always
-
     - name: Pull worker image
       community.docker.docker_image:
-        name: "rimo9docker/worker-app"
+        name: "chojiu/worker-project-1"
         tag: latest
         source: pull
-
     - name: Run worker container
       community.docker.docker_container:
         name: worker
-        image: "rimo9docker/worker-app:latest"
+        image: "chojiu/worker-project-1:latest"
         env:
-          REDIS_HOST: "redis"
-          DB_HOST: "10.0.2.251"
+          REDIS_HOST: "redis" # hostname because of shared network
+          DB_HOST: "10.0.3.37"
           DB_USER: "postgres"
           DB_PASSWORD: "postgres"
           DB_NAME: "postgres"
@@ -124,10 +108,11 @@
           - name: backend_network
         state: started
         restart_policy: always
-
-# DATABASE TIER — PostgreSQL container
-- name: Deploy database container (PostgreSQL)
-  hosts: database
+############################################################
+# DB INSTANCE — Postgres
+############################################################
+- name: Deploy db container (PostgreSQL)
+  hosts: db-instance-1
   become: yes
   tasks:
     - name: Pull postgres image
@@ -135,7 +120,6 @@
         name: postgres
         tag: latest
         source: pull
-
     - name: Run postgres container
       community.docker.docker_container:
         name: postgres

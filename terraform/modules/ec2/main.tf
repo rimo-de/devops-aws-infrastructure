@@ -21,7 +21,7 @@ resource "aws_instance" "frontend" {
 resource "aws_instance" "backend" {
   ami                    = var.ami_id
   instance_type          = var.instance_type
-  subnet_id              = var.private_subnet_id
+  subnet_id              = var.private_subnet_1_id
   vpc_security_group_ids = [var.private_sg_id]
   key_name               = var.key_pair_name
 
@@ -34,7 +34,7 @@ resource "aws_instance" "backend" {
 resource "aws_instance" "database" {
   ami                    = var.ami_id
   instance_type          = var.instance_type
-  subnet_id              = var.private_subnet_id
+  subnet_id              = var.private_subnet_2_id
   vpc_security_group_ids = [var.database_sg_id]
   key_name               = var.key_pair_name
 
