@@ -16,23 +16,23 @@ The goal of this project is to provide a clear and reproducible DevOps solution 
 
 [Detailed explanation of Application architecture](./docs/application-architecture.md)
 
-### Docker & Docker Compose (Local Setup)
+### 1: Docker & Docker Compose (Local Setup)
 
 [Dockerisation of applications](./docs/docker-setup.md)
 
-### Infrastructure Design on AWS (High-Level)
+### 2. Infrastructure Design on AWS (High-Level)
 
 [High level Infrastructure design](./docs/aws-infrastructure-design.md)
 
-### Infrastructure Diagram (Visual)
+### 3. Infrastructure Diagram (Visual)
 
 [Detailed explanation of Infrastructure diagram](./docs/infrastructure-diagram.md)
 
-### Terraform – Infrastructure as Code
+### 4. Terraform – Infrastructure as Code
 
 [Terraform Provisioning as modules](./docs/terraform-provisioning.md)
 
-### Ansible – Manage resources on AWS
+### 5. Ansible – Manage resources on AWS
 
 [Ansible playbook](./docs/ansible-deployment.md)
 
