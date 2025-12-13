@@ -1,6 +1,4 @@
-#
-
-Architecture Design
+# Architecture Design
 
 ![Architecture Diagram](../img/Architecture_design.png)
 
