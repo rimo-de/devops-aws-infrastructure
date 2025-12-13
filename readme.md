@@ -16,29 +16,19 @@ The goal of this project is to provide a clear and reproducible DevOps solution 
 
 [Detailed explanation of Application architecture](./docs/application-architecture.md)
 
-### 1: Docker & Docker Compose (Local Setup)
+| Topic                                        | Documentation Link                                                                 |
+| -------------------------------------------- | ---------------------------------------------------------------------------------- |
+| 1. Docker & Docker Compose (Local Setup)     | [Dockerisation of applications](./docs/docker-setup.md)                            |
+| 2. Infrastructure Design on AWS (High-Level) | [High level Infrastructure design](./docs/aws-infrastructure-design.md)            |
+| 3. Infrastructure Diagram (Visual)           | [Detailed explanation of Infrastructure diagram](./docs/infrastructure-diagram.md) |
+| 4. Terraform – Infrastructure as Code        | [Terraform Provisioning as modules](./docs/terraform-provisioning.md)              |
+| 5. Ansible – Manage resources on AWS         | [Ansible playbook](./docs/ansible-deployment.md)                                   |
 
-[Dockerisation of applications](./docs/docker-setup.md)
+## Testing & Add-ons
 
-### 2. Infrastructure Design on AWS (High-Level)
-
-[High level Infrastructure design](./docs/aws-infrastructure-design.md)
-
-### 3. Infrastructure Diagram (Visual)
-
-[Detailed explanation of Infrastructure diagram](./docs/infrastructure-diagram.md)
-
-### 4. Terraform – Infrastructure as Code
-
-[Terraform Provisioning as modules](./docs/terraform-provisioning.md)
-
-### 5. Ansible – Manage resources on AWS
-
-[Ansible playbook](./docs/ansible-deployment.md)
-
-<!-- | Topic                            | Documentation Link                                      |
-| -------------------------------- | ------------------------------------------------------- |
-| Demo / Flow of the Running App   | [read more..](./docs/demo-and-flow.md)                  |
-| Challenges & Troubleshooting     | [read more..](./docs/challenges-and-troubleshooting.md) |
-| Add-ons / Improvements (If Any)  | [read more..](./docs/addons-and-improvements.md)        |
-| Conclusion & Key Learnings       | [read more..](./docs/conclusion-and-learnings.md)       | -->
+| Topic                              | Documentation Link                                                        |
+| ---------------------------------- | ------------------------------------------------------------------------- |
+| 6. Demo / Flow of the Running App  | [Testing the services](./docs/demo-and-flow.md)                           |
+| 7. Challenges & Troubleshooting    | [Chanllenges & Troubleshooting](./docs/challenges-and-troubleshooting.md) |
+| 8. Add-ons / Improvements (If Any) | [Add-ons & Improvements](./docs/addons-and-improvements.md)               |
+| 9. Conclusion & Key Learnings      | [Conclusion](./docs/conclusion-and-learnings.md)                          |
