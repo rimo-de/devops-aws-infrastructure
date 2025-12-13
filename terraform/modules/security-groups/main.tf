@@ -94,7 +94,7 @@ resource "aws_security_group" "database" {
     security_groups = [aws_security_group.public.id]
   }
 
-  # Allow SSH
+  # Allow traffic from public security group
   ingress {
     from_port       = 5432
     to_port         = 5432

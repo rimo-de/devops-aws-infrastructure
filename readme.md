@@ -1,5 +1,8 @@
 # Three-Tier AWS Infrastructure & DevOps Automation
 
+Microservices Voting Application
+A distributed voting app where users cast votes for their favorite pet. The architecture consists of a Python/Flask vote frontend, Node.js results dashboard, .NET worker service, Redis queue, and PostgreSQL database—demonstrating a polyglot microservices pattern with containerized deployment.
+
 | Topic                                     | Documentation Link                                      |
 | ----------------------------------------- | ------------------------------------------------------- |
 | Problem & Goal of the Lab/Project         | [read more..](./docs/problem-and-goals.md)              |
