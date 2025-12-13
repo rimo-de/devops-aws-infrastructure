@@ -29,3 +29,6 @@ Thumbs.db
 __pycache__/
 *.pyc
 *.pyo
+
+# Entire Git repositories (if you have submodules or nested repos)
+*/.git/
