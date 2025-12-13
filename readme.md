@@ -14,7 +14,7 @@ The goal of this project is to provide a clear and reproducible DevOps solution 
 
 ## Application Architecture (Microservices)
 
-![Microservices Architecture](../img/Microservices_architecture.png)
+![Microservices Architecture](./img/Microservices_architecture.png)
 
 [Detailed explanation of Application architecture](./docs/application-architecture.md)
 
