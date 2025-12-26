@@ -4,21 +4,22 @@ This project is a hands-on exploration of how to deploy a small microservices ap
 
 The app itself is a simple (but realistic) distributed system where users vote for their favorite pet, and results update live. It’s built using multiple languages and stacks to replicate a real polyglot microservices environment.
 
-🎯 Problem & Goal of This Project
-🔍 Problem Statement
+## 🎯 Problem & Goal of This Project
+
+- 🔍 Problem Statement
 
 Modern applications are increasingly built as collections of microservices that must communicate reliably while remaining scalable, fault-tolerant, and easy to deploy.
 
 Manually provisioning AWS resources, configuring EC2 instances, and deploying multiple containers is:
 
-❌ Time-consuming
-❌ Error-prone
-❌ Hard to reproduce
-❌ Difficult to maintain across environments
+- ❌ Time-consuming
+- ❌ Error-prone
+- ❌ Hard to reproduce
+- ❌ Difficult to maintain across environments
 
 Without automation, ensuring all microservices work together seamlessly becomes a major operational challenge.
 
-🎯 Goal
+- 🎯 Goal
 
 The goal of this project is to build a clear, repeatable, automated DevOps workflow for deploying containerized microservices on AWS.
 
@@ -29,7 +30,7 @@ This repository demonstrates how to:
 - Deploy multiple microservices that function as a cohesive distributed system
 - Enable automated, consistent, and reliable deployments
 
-🧩 Application Architecture (Microservices)
+## 🧩 Application Architecture (Microservices)
 
 This microservices voting app consists of:
 
@@ -41,26 +42,26 @@ This microservices voting app consists of:
 
 👉 Detailed explanation of the application architecture
 
-📘 Documentation Index
+## 📘 Documentation Index
 
-| Topic                                        | Documentation Link                             |
-| -------------------------------------------- | ---------------------------------------------- |
-| 1. Docker & Docker Compose (Local Setup)     | Dockerisation of applications                  |
-| 2. Infrastructure Design on AWS (High-Level) | High level Infrastructure design               |
-| 3. Infrastructure Diagram (Visual)           | Detailed explanation of Infrastructure diagram |
-| 4. Terraform – Infrastructure as Code        | Terraform Provisioning as modules              |
-| 5. Ansible – Manage Resources on AWS         | Ansible playbook                               |
+| Topic                                        | Documentation Link                                                                 |
+| -------------------------------------------- | ---------------------------------------------------------------------------------- |
+| 1. Docker & Docker Compose (Local Setup)     | [Dockerisation of applications](./docs/docker-setup.md)                            |
+| 2. Infrastructure Design on AWS (High-Level) | [High level Infrastructure design](./docs/aws-infrastructure-design.md)            |
+| 3. Infrastructure Diagram (Visual)           | [Detailed explanation of Infrastructure diagram](./docs/infrastructure-diagram.md) |
+| 4. Terraform – Infrastructure as Code        | [Terraform Provisioning as modules](./docs/terraform-provisioning.md)              |
+| 5. Ansible – Manage resources on AWS         | [Ansible playbook](./docs/ansible-deployment.md)                                   |
 
-Testing & Add-ons
+## 🔧 Testing & Add-ons
 
-| Topic                             | Documentation Link           |
-| --------------------------------- | ---------------------------- |
-| 6. Demo / Flow of the Running App | Testing the services         |
-| 7. Challenges & Troubleshooting   | Challenges & Troubleshooting |
-| 8. Add-ons / Improvements         | Add-ons & Improvements       |
-| 9. Conclusion & Key Learnings     | Conclusion                   |
+| Topic                             | Documentation Link                                                       |
+| --------------------------------- | ------------------------------------------------------------------------ |
+| 6. Demo / Flow of the Running App | [Testing the services](./docs/demo-and-flow.md)                          |
+| 7. Challenges & Troubleshooting   | [Challenges & Troubleshooting](./docs/challenges-and-troubleshooting.md) |
+| 8. Add-ons / Improvements         | [Add-ons & Improvements](./docs/addons-and-improvements.md)              |
+| 9. Conclusion & Key Learnings     | [Conclusion](./docs/conclusion-and-learnings.md)                         |
 
-🏗 High-Level Project Overview
+## 🏗 High-Level Project Overview
 
 This repository ties together multiple DevOps practices into a single, cohesive workflow:
 
@@ -72,7 +73,7 @@ This repository ties together multiple DevOps practices into a single, cohesive 
 
 This is a simplified but realistic version of how modern cloud-native deployments operate.
 
-🚀 How to Use This Project (Quick Start)
+## 🚀 How to Use This Project (Quick Start)
 
 1️⃣ Provision AWS Infrastructure
 
