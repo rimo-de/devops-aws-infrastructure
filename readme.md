@@ -32,34 +32,27 @@ This repository demonstrates how to:
 
 ## 🧩 Application Architecture (Microservices)
 
-This microservices voting app consists of:
-
-- Python / Flask → Vote frontend
-- Node.js → Live results dashboard
-- .NET Worker → Background worker service
-- Redis → Queue for incoming votes
-- PostgreSQL → Database for persistent storage
+This microservices voting app consists of: [Brief Explanation](./docs/0-application-architecture.md)
 
 👉 Detailed explanation of the application architecture
 
 ## 📘 Documentation Index
 
-| Topic                                        | Documentation Link                                                                 |
-| -------------------------------------------- | ---------------------------------------------------------------------------------- |
-| 1. Docker & Docker Compose (Local Setup)     | [Dockerisation of applications](./docs/docker-setup.md)                            |
-| 2. Infrastructure Design on AWS (High-Level) | [High level Infrastructure design](./docs/aws-infrastructure-design.md)            |
-| 3. Infrastructure Diagram (Visual)           | [Detailed explanation of Infrastructure diagram](./docs/infrastructure-diagram.md) |
-| 4. Terraform – Infrastructure as Code        | [Terraform Provisioning as modules](./docs/terraform-provisioning.md)              |
-| 5. Ansible – Manage resources on AWS         | [Ansible playbook](./docs/ansible-deployment.md)                                   |
+| Topic                                    | Documentation Link                                                                   |
+| ---------------------------------------- | ------------------------------------------------------------------------------------ |
+| 1. Docker & Docker Compose (Local Setup) | [Dockerisation of applications](./docs/1-docker-setup.md)                            |
+| 3. Infrastructure Diagram (Visual)       | [Detailed explanation of Infrastructure diagram](./docs/2-infrastructure-diagram.md) |
+| 4. Terraform – Infrastructure as Code    | [Terraform Provisioning as modules](./docs/3-terraform-provisioning.md)              |
+| 5. Ansible – Manage resources on AWS     | [Ansible playbook](./docs/4-ansible-deployment.md)                                   |
 
 ## 🔧 Testing & Add-ons
 
-| Topic                             | Documentation Link                                                       |
-| --------------------------------- | ------------------------------------------------------------------------ |
-| 6. Demo / Flow of the Running App | [Testing the services](./docs/demo-and-flow.md)                          |
-| 7. Challenges & Troubleshooting   | [Challenges & Troubleshooting](./docs/challenges-and-troubleshooting.md) |
-| 8. Add-ons / Improvements         | [Add-ons & Improvements](./docs/addons-and-improvements.md)              |
-| 9. Conclusion & Key Learnings     | [Conclusion](./docs/conclusion-and-learnings.md)                         |
+| Topic                             | Documentation Link                                                         |
+| --------------------------------- | -------------------------------------------------------------------------- |
+| 6. Demo / Flow of the Running App | [Testing the services](./docs/5-demo-and-flow.md)                          |
+| 7. Challenges & Troubleshooting   | [Challenges & Troubleshooting](./docs/6-challenges-and-troubleshooting.md) |
+| 8. Add-ons / Improvements         | [Add-ons & Improvements](./docs/7-addons-and-improvements.md)              |
+| 9. Conclusion & Key Learnings     | [Conclusion](./docs/8-conclusion-and-learnings.md)                         |
 
 ## 🏗 High-Level Project Overview
 
@@ -89,14 +82,17 @@ This creates the VPC, EC2 instances, networking, and security configuration.
 2️⃣ Configure EC2 Instances with Ansible
 
 ```ansible
-cd ../ansible
+cd ansible
 ansible-playbook -i inventory setup.yml
 ```
 
 This installs Docker and prepares each instance for deployment.
 
 3️⃣ Deploy the Microservices
+
+```ansible
 ansible-playbook -i inventory deploy-app.yml
+```
 
 This step runs all containers on the configured EC2 instances.
 
