@@ -31,10 +31,10 @@ docker compose up -d
 
 ## Images
 
-!(../img/Multi Services using Docker Compose 1.png)
+![Docker Compose 1](../img/1_Docker_Compose.png)
 
-!(../img/Multi Services using Docker Compose 2.png)
+![Docker Compose 2](../img/2_Docker_Compose.png)
 
-!(../img/Multi Services using Docker Compose 3.png)
+![Docker Compose 3](../img/3_Docker_Compose.png)
 
-!(../img/Multi Services using Docker Compose 4.png)
+![Docker Compose 4](../img/4_Docker_Compose.png)

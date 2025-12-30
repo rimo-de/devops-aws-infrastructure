@@ -24,7 +24,7 @@ From the `terraform/` directory:
 terraform init
 ```
 
-!(../img/1_Terraform.png)
+![Terraform 1](../img/1_Terraform.png)
 
 ## Validate the configuration
 
@@ -32,7 +32,7 @@ terraform init
 terraform validate
 ```
 
-!(../img/2_Terraform.png)
+![Terraform 2](../img/2_Terraform.png)
 
 ## Review the execution plan
 
@@ -40,7 +40,7 @@ terraform validate
 terraform plan
 ```
 
-!(../img/3_Terraform.png)
+![Terraform 3](../img/3_Terraform.png)
 
 ## Apply the changes to create the infrastructure
 
@@ -48,9 +48,9 @@ terraform plan
 terraform apply --auto-approve
 ```
 
-!(../img/4_Terraform.png)
+![Terraform 4](../img/4_Terraform.png)
 
-!(../img/5_Terraform.png)
+![Terraform 5](../img/5_Terraform.png)
 
 ## You can then destroy the resources when you’re done
 
