@@ -4,7 +4,7 @@ This project is a hands-on exploration of how to deploy a small microservices ap
 
 The app itself is a simple (but realistic) distributed system where users vote for their favorite pet, and results update live. It’s built using multiple languages and stacks to replicate a real polyglot microservices environment.
 
-![Microservices Architecture](../img/Microservices_architecture.png)
+![Microservices Architecture](./img/Microservices_architecture.png)
 
 ## 🎯 Problem & Goal of This Project
 
