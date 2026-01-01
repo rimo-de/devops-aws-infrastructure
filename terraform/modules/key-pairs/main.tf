@@ -21,6 +21,6 @@ resource "aws_key_pair" "main" {
 # Save private key to ~/.ssh with correct permissions
 resource "local_file" "private_key" {
   content         = tls_private_key.main.private_key_pem
-  filename        = pathexpand("~/.ssh/${local.name_prefix}-private-key.pem")
+  filename        = pathexpand("~/.ssh/${local.name_prefix}-keypair.pem")
   file_permission = "0600"
 }

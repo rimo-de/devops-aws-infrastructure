@@ -51,3 +51,11 @@ From the `ansible/` directory:
 ```bash
 ansible-playbook ansible-playbook.yml -i inventory.ini
 ```
+
+![Ansilbe 1](../img/1_Ansible.png)
+
+![Ansilbe 2](../img/2_Ansible.png)
+
+![Ansilbe 3](../img/3_Ansible.png)
+
+![Ansilbe 4](../img/4_Ansible.png)
